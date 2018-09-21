@@ -3,8 +3,17 @@ extends ../layouts/common.pug
 block content
   h1 Create user
 
-  form(action="/users/create", method="POST")
-    label Name
-    input(name="name", type="text")
+  if errors
+    each error in errors
+      .alert.alert-danger= error
 
-    button Create
+  form(action="/users/create", method="POST")
+    .form-group
+      label(for="name") Name
+      input#name.form-control(name="name", type="text", value=values ? values.name : "")
+
+    .form-group
+      label(for="phone") Phone
+      input#phone.form-control(name="phone", type="text", value=values ? values.phone : "")
+
+    button.btn.btn-primary Create
