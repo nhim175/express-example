@@ -1,4 +1,5 @@
-// req.query
+require('dotenv').config();
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')
@@ -16,7 +17,7 @@ app.set('views', './views');
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(cookieParser('asdkaodkoas10230'));
+app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.use(express.static('public'));
 
@@ -33,5 +34,3 @@ app.use('/auth', authRoute);
 app.listen(port, function() {
   console.log('Server listening on port ' + port);
 });
-
-console.log(process.env);
