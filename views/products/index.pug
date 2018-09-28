@@ -1,0 +1,20 @@
+extends ../layouts/common
+
+block content
+  h1 Products
+
+  .d-flex.align-items-center
+    form.ml-auto(action="/products/search", method="GET", class="d-flex")
+      input(type="text", name="q", class="form-control")
+      button(class="btn btn-primary ml-2") Search
+
+  .row
+    each product in products
+      .col-sm-6.col-md-4.col-lg-3
+        .card.mb-3
+          img.card-img-top(src=product.image)
+          .card-body
+            h5.card-title= product.name
+            p.card-text= product.description
+            a.btn.btn-primary(href='#') Add to cart
+
