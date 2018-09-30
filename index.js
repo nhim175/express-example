@@ -4,6 +4,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var csurf = require('csurf');
+var mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGO_URL);
 
 var userRoute = require('./routes/user.route');
 var authRoute = require('./routes/auth.route');
